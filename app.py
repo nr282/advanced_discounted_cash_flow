@@ -26,7 +26,7 @@ app = Flask(__name__)
 def _validate(dates, cashflows):
     return True
 
-@app.route("/", methods=['GET'])
+@app.route("/")
 def hello() -> str:
     # Use basic logging with custom fields
     logger.info(logField="custom-entry", arbitraryField="custom-entry")
