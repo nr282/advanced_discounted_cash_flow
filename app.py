@@ -35,10 +35,10 @@ def hello() -> str:
     values = request.args.get('values')
     dates = request.args.get('dates')
 
-    print("Data is provided by")
+    print("Values are provided by")
     print(values)
 
-    print("Values are provided by: ")
+    print("Dates are provided by: ")
     print(dates)
 
     #args = request.args.to_dict()
