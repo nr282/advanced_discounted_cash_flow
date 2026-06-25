@@ -32,10 +32,14 @@ def hello() -> str:
     logger.info(logField="custom-entry", arbitraryField="custom-entry")
 
     # Use request.args.get() to safely pull values (returns None if missing)
-    data = request.args.get('data')
+    values = request.args.get('values')
+    dates = request.args.get('dates')
 
     print("Data is provided by")
-    print(data)
+    print(values)
+
+    print("Values are provided by: ")
+    print(dates)
 
     #args = request.args.to_dict()
     return "Hello, World!"
