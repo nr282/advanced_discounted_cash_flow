@@ -26,27 +26,13 @@ app = Flask(__name__)
 def _validate(dates, cashflows):
     return True
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def hello() -> str:
     # Use basic logging with custom fields
     logger.info(logField="custom-entry", arbitraryField="custom-entry")
 
-    data = request.get_json()  # Parse incoming JSON
-    dates = data.get('Dates', [])  # Safely extract the list
-    cash_flows = data.get('CashFlows', [])
-
-    logger.info(f"Child logger with trace Id. Dates are provided by {dates}")
-    logger.info(f"Child logger with trace Id. Cash Flows are provided by {cash_flows}")
-
-    #Validate Arguments
-    valid = _validate(dates, cash_flows)
-
-    if valid:
-        # https://cloud.google.com/run/docs/logging#correlate-logs
-        logger.info("Child logger with trace Id.")
-        return "Hello, World!"
-    else:
-        return "Arguments not validated"
+    #args = request.args.to_dict()
+    return "Hello, World!"
 
 
 def shutdown_handler(signal_int: int, frame: FrameType) -> None:
