@@ -31,6 +31,9 @@ def hello() -> str:
     # Use basic logging with custom fields
     logger.info(logField="custom-entry", arbitraryField="custom-entry")
 
+    # Use request.args.get() to safely pull values (returns None if missing)
+    data = request.args.get('data')
+
     #args = request.args.to_dict()
     return "Hello, World!"
 
