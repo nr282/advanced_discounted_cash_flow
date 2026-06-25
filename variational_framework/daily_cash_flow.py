@@ -61,6 +61,6 @@ def calculate_daily_cash_flow(data: pd.DataFrame):
     data = pd.DataFrame.from_dict({"Date": daily_values})
     data["Start_Date"] = data["Date"].apply(lambda x: (x - begin_time).days)
     data["End_Date"] = data["Start_Date"].apply(lambda x: x + 1)
-    data["Value"] = data.apply(lambda row: integrate.quad(func, row["Start_Date"], row["End_Date"])[0], axis=1)
+    data["Value"] = data.apply(lambda  row: integrate.quad(func, row["Start_Date"], row["End_Date"])[0], axis=1)
     return data
 
