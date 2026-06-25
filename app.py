@@ -35,6 +35,9 @@ def hello() -> str:
     dates = data.get('Dates', [])  # Safely extract the list
     cash_flows = data.get('CashFlows', [])
 
+    logger.info(f"Child logger with trace Id. Dates are provided by {dates}")
+    logger.info(f"Child logger with trace Id. Cash Flows are provided by {cash_flows}")
+
     #Validate Arguments
     valid = _validate(dates, cash_flows)
 
