@@ -35,7 +35,7 @@ def hello() -> str:
     dates = data.get('Dates', [])  # Safely extract the list
     cash_flows = data.get('CashFlows', [])
 
-    #Validation
+    #Validate Arguments
     valid = _validate(dates, cash_flows)
 
     if valid:
