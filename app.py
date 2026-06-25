@@ -34,6 +34,9 @@ def hello() -> str:
     # Use request.args.get() to safely pull values (returns None if missing)
     data = request.args.get('data')
 
+    print("Data is provided by")
+    print(data)
+
     #args = request.args.to_dict()
     return "Hello, World!"
 
