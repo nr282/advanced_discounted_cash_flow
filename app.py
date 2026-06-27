@@ -45,7 +45,7 @@ def calculate_cash_flows() -> str:
     n = len(values)
     quarters = pd.period_range(start=start_quarter, periods=n, freq="Q-DEC")
     dates = quarters.to_timestamp()
-    values = [float(val) for val in values]
+    values = [float(val) for val in values.split(",")]
     data = pd.DataFrame.from_dict({"Date": dates, "Quarters": quarters, "Value": values})
 
     result = calculate_daily_cash_flow(data)
