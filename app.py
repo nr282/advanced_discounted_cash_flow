@@ -19,7 +19,8 @@ from types import FrameType
 from flask import Flask, request, jsonify
 
 from utils.logging import logger
-
+from variational_framework.daily_cash_flow import calculate_daily_cash_flow
+import pandas as pd
 app = Flask(__name__)
 
 
@@ -33,16 +34,23 @@ def hello() -> str:
 
     # Use request.args.get() to safely pull values (returns None if missing)
     values = request.args.get('values')
-    dates = request.args.get('dates')
+    start_quarter = request.args.get('start_date')
 
     print("Values are provided by")
     print(values)
 
-    print("Dates are provided by: ")
-    print(dates)
+    print("Begin Quarter: ")
+    print(start_quarter)
+
+    quarters = pd.period_range(start=start_quarter, periods=20, freq="Q-DEC")
+    dates = quarters.to_timestamp()
+    values = [20 for quarter in dates]
+    data = pd.DataFrame.from_dict({"Date": dates, "Quarters": quarters, "Value": values})
+
+    result = calculate_daily_cash_flow(data)
 
     #args = request.args.to_dict()
-    return "Hello, World!"
+    return result
 
 
 def shutdown_handler(signal_int: int, frame: FrameType) -> None:
