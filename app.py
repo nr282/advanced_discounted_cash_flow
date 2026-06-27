@@ -49,8 +49,8 @@ def calculate_cash_flows() -> str:
 
     result = calculate_daily_cash_flow(data)
 
-    #args = request.args.to_dict()
-    return result
+    res = result.to_dict()
+    return res
 
 
 def shutdown_handler(signal_int: int, frame: FrameType) -> None:
