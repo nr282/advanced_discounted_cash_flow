@@ -8,3 +8,4 @@ google-auth==2.49.0
 scipy
 numpy
 matplotlib
+pandas
