@@ -42,9 +42,10 @@ def calculate_cash_flows() -> str:
     print("Begin Quarter: ")
     print(start_quarter)
 
-    quarters = pd.period_range(start=start_quarter, periods=20, freq="Q-DEC")
+    n = len(values)
+    quarters = pd.period_range(start=start_quarter, periods=n, freq="Q-DEC")
     dates = quarters.to_timestamp()
-    values = [20 for quarter in dates]
+    values = [float(val) for val in values]
     data = pd.DataFrame.from_dict({"Date": dates, "Quarters": quarters, "Value": values})
 
     result = calculate_daily_cash_flow(data)
