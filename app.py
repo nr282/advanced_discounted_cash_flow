@@ -34,7 +34,7 @@ def calculate_cash_flows() -> str:
 
     # Use request.args.get() to safely pull values (returns None if missing)
     values = request.args.get('values')
-    start_quarter = request.args.get('start_date')
+    start_quarter = request.args.get('start_quarter')
 
     print("Values are provided by")
     print(values)
