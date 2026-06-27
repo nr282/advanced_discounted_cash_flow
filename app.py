@@ -28,7 +28,7 @@ def _validate(dates, cashflows):
     return True
 
 @app.route("/")
-def hello() -> str:
+def calculate_cash_flows() -> str:
     # Use basic logging with custom fields
     logger.info(logField="custom-entry", arbitraryField="custom-entry")
 
