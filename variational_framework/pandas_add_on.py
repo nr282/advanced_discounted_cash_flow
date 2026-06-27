@@ -7,7 +7,7 @@ are based on the interpolation of particular points in the dataframe.
 
 import pandas as pd
 import numpy as np
-from variational_framework import VariationalFramework, IntegralConstraintElement, IntegralConstraint
+from .variational_framework import VariationalFramework, IntegralConstraintElement, IntegralConstraint
 from datetime import datetime, timedelta
 import calendar
 import math

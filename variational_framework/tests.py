@@ -6,7 +6,7 @@ Tests that are used to verify the performance of the variational framework.
 
 import unittest
 import os
-from variational_framework import (create_and_solve_problem_1,
+from .variational_framework import (create_and_solve_problem_1,
                                    indicator, h, g,
                                    integral_of_g,
                                    create_and_solve_problem_2,
@@ -14,14 +14,14 @@ from variational_framework import (create_and_solve_problem_1,
                                    create_and_solve_problem_4,
                                    create_and_solve_problem_0,
                                    create_and_solve_problem_5)
-from pandas_add_on import (create_column_dictionaries,
+from .pandas_add_on import (create_column_dictionaries,
                            solve_dataframe,
                            solve_pandas_series
                            )
 import numpy as np
 from scipy import integrate
 import pandas as pd
-from daily_cash_flow import calculate_daily_cash_flow
+from .daily_cash_flow import calculate_daily_cash_flow
 
 class TestVariationalFramework(unittest.TestCase):
 

@@ -6,8 +6,8 @@ This creates the Advanced Discounted Cash Flow.
 """
 
 import pandas as pd
-from pandas_add_on import solve_pandas_series, IntegralConstraint, IntegralConstraintElement
-from variational_framework import VariationalFramework, correct_function
+from .pandas_add_on import solve_pandas_series, IntegralConstraint, IntegralConstraintElement
+from .variational_framework import VariationalFramework, correct_function
 import scipy.integrate as integrate
 
 
@@ -18,6 +18,10 @@ def calculate_daily_cash_flow(data: pd.DataFrame):
 
 
     """
+
+    assert("Date" in data.columns)
+    assert("Quarters" in data.columns)
+    assert("Value" in data.columns)
 
     data.set_index("Date", inplace=True)
     data.index = data.index.sort_values()
