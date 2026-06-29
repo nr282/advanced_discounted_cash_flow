@@ -592,3 +592,4 @@ class TestVariationalFramework(unittest.TestCase):
         assert len(df) > 0
         assert(df[:90]["Value"].sum() == 20)
         assert(np.isclose(df[:90]["Uniform_Value"].sum(),20))
+

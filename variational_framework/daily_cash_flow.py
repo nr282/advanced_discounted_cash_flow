@@ -74,6 +74,6 @@ def calculate_daily_cash_flow(data: pd.DataFrame):
 
     res['Year_Quarter'] = res['Date'].dt.to_period('Q')
     res["Uniform_Value"] = res["Year_Quarter"].apply(lambda dt: data[data["Quarters"] == dt]["Value"].iloc[0] / get_number_days(dt))
-
+    res.drop(columns=["Year_Quarter"], inplace=True)
     return res
 
