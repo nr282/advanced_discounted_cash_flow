@@ -13,7 +13,7 @@ import scipy.integrate as integrate
 
 def get_number_days(dt):
 
-    num_days = 90
+    num_days = (dt.end_time.normalize() - dt.start_time.normalize()).days + 1
     return num_days
 
 
