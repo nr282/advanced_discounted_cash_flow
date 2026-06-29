@@ -13,7 +13,7 @@ import scipy.integrate as integrate
 
 def get_number_days(dt):
 
-    num_days = dt.asfreq('D', 'end').dayofyear
+    num_days = 90
     return num_days
 
 
