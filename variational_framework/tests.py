@@ -588,5 +588,7 @@ class TestVariationalFramework(unittest.TestCase):
         values = [20 for quarter in dates]
         data = pd.DataFrame.from_dict({"Date": dates, "Quarters": quarters, "Value": values})
         df = calculate_daily_cash_flow(data)
+
         assert len(df) > 0
         assert(df[:90]["Value"].sum() == 20)
+        assert(np.isclose(df[:90]["Uniform_Value"].sum(),20))

@@ -11,6 +11,11 @@ from .variational_framework import VariationalFramework, correct_function
 import scipy.integrate as integrate
 
 
+def get_number_days(dt):
+
+    num_days = dt.asfreq('D', 'end').dayofyear
+    return num_days
+
 
 def calculate_daily_cash_flow(data: pd.DataFrame):
     """
@@ -62,9 +67,13 @@ def calculate_daily_cash_flow(data: pd.DataFrame):
     res1, res2 = framework.solve()
     func = correct_function(res1.get(1))
     daily_values = pd.date_range(start=begin_time, end=end_time, freq="D")
-    data = pd.DataFrame.from_dict({"Date": daily_values})
-    data["Start_Date"] = data["Date"].apply(lambda x: (x - begin_time).days)
-    data["End_Date"] = data["Start_Date"].apply(lambda x: x + 1)
-    data["Value"] = data.apply(lambda  row: integrate.quad(func, row["Start_Date"], row["End_Date"])[0], axis=1)
-    return data
+    res = pd.DataFrame.from_dict({"Date": daily_values})
+    res["Start_Date"] = res["Date"].apply(lambda x: (x - begin_time).days)
+    res["End_Date"] = res["Start_Date"].apply(lambda x: x + 1)
+    res["Value"] = res.apply(lambda  row: integrate.quad(func, row["Start_Date"], row["End_Date"])[0], axis=1)
+
+    res['Year_Quarter'] = res['Date'].dt.to_period('Q')
+    res["Uniform_Value"] = res["Year_Quarter"].apply(lambda dt: data[data["Quarters"] == dt]["Value"].iloc[0] / get_number_days(dt))
+
+    return res
 
